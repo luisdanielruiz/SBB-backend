@@ -1,0 +1,158 @@
+a.editarGrid {
+    background-image: url('../styles/Default/sprite.png') !important;
+
+    height: 24px !important;
+    border: rgb(219, 219, 219) 1px solid;
+    background-position: -30px 4px !important;
+    min-width: 22px !important;
+    margin-right: 4px !important;
+}
+a.editarGrid:hover {
+    background-image: url('../styles/Default/sprite.png');
+    border: rgb(237, 218, 29) 2px solid;
+}
+a.editarGrid:active {
+    background-image: url('../styles/Default/sprite.png');
+    border: rgb(237, 218, 29) 2px solid;
+    background-position: -30px 4px !important;
+}
+
+a.elimnarGrid {
+    background-image: url('../styles/Default/sprite.png');
+
+    height: 24px !important;
+    border: rgb(219, 219, 219) 1px solid;
+    
+    background-position: -30px -13px !important;
+    min-width: 22px !important;
+    margin-right: 0px !important;
+}
+a.elimnarGrid:hover {
+    background-image: url('../styles/Default/sprite.png');
+    border: rgb(237, 218, 29) 2px solid;
+}
+a.elimnarGrid:active {
+    background-image: url('../styles/Default/sprite.png');
+    border: rgb(237, 218, 29) 2px solid;
+    background-position: -30px -13px !important;
+}
+
+
+a.verMasInfo {
+    background-image: url('../styles/Default/sprite.png');
+
+    height: 24px !important;
+    border: rgb(219, 219, 219) 1px solid;
+    
+    background-position: -30px -125px !important;
+    min-width: 22px !important;
+    margin-right: 0px !important;
+    margin-left: 4px !important;
+}
+a.verMasInfo:hover {
+    background-image: url('../styles/Default/sprite.png');
+    border: rgb(237, 218, 29) 2px solid;
+}
+a.verMasInfo:active {
+    background-image: url('../styles/Default/sprite.png');
+    border: rgb(237, 218, 29) 2px solid;
+    background-position: -30px -125px !important;
+}
+
+
+.bttGridContainer{
+    margin-bottom: 5px;
+}
+.fieldlist {
+    margin: 0 0 -2em;
+    padding: 0;
+}
+
+.fieldlist li {
+    list-style: none;
+    padding-bottom: 0.5em;
+}
+
+.fieldlist label {
+    display: block;
+    padding-bottom: 0.3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #444;
+}
+
+.k-window-titlebar{
+    margin-top: -29px;
+    color: #121212;
+    background-color: rgb(237, 218, 29);
+}
+
+.k-window-content{
+    background-color: #f1f1f1;
+}
+
+.k-grid-content tr:hover{
+    background-color: rgb(251, 244, 172);
+}
+.cargador{
+    position: absolute; z-index: 99999 ;background-color: rgba(150,150,150,0.05);width: 100%; height: 100%; top: 0px; left: 0px;
+}
+.k-grid-e{
+    font-size: 0px;
+}
+.k-grid-x{
+    font-size: 0px;
+}
+.k-grid-y{
+    font-size: 0px;
+}
+.k-grid td {
+    padding: 0px 0.4em ;
+}
+
+.navbar .container {
+    margin: 0px!important;
+    width: 100% !important;
+
+}
+a.dropdown-toggle{
+    padding-top: 10px !important; 
+    padding-bottom: 5px !important; 
+}
+
+.navbar {
+    min-height: 40px !important;
+    height: 40px !important;
+}
+
+.navbar-toggle {    
+    padding: 4px 10px !important;
+}
+
+.navbar-brand{
+    font-weight: normal !important;
+    font-size: 16px !important;
+}
+
+.navbar-header{
+    margin-top: -4px !important;
+}
+
+.logoMenu{
+    margin-top: -8px;
+    height: 34px;
+}
+
+.k-grid td {
+    font-size: 10px;
+}
+
+.k-grid td {
+    font-size: 10px;
+}
+
+.k-grid-header th.k-with-icon .k-link {
+    margin-right: 18px;
+    font-size: 12px;
+}

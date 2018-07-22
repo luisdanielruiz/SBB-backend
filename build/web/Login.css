@@ -1,0 +1,22 @@
+
+.cuadroLogin{
+    width: 450px;
+    margin: 200px auto auto auto;    
+}
+
+.contCaposLogin{
+    padding:10px 20px;
+}
+
+@media(max-width: 768px) { /*En caso de que no sea telefono*/
+    .cuadroLogin{
+        width: 96%;
+        margin: auto auto auto auto;
+        
+    }
+    .contCaposLogin{
+        padding:0px 0px;
+    }
+
+
+}

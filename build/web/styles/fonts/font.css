@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Ubuntu-R copia';
+  src: url('Ubuntu-R copia.eot');
+  src: url('Ubuntu-R copia.woff2') format('woff2'),
+       url('Ubuntu-R copia.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('Ubuntu.woff') format('woff'),
+       url('Ubuntu.ttf') format('truetype'),
+       url('Ubuntu.svg#Ubuntu') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
