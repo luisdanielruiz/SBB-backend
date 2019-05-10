@@ -104,7 +104,7 @@ function guardarUsuario(){
 }
  
 var entidadEliminar = null; 
-function elimnarWinUsuario(obj){/*tabla es string*/ 
+function eliminarWinUsuario(obj){/*tabla es string*/ 
     if (obj != null){ 
         entidadEliminar = obj;
         $("#windowEliminarUsuario").data("kendoWindow").center();

@@ -71,7 +71,7 @@ function guardarCategories(){
     }
 } 
 var entidadEliminar = null; 
-function elimnarWinCategories(obj){/*tabla es string*/ 
+function eliminarWinCategories(obj){/*tabla es string*/ 
     if (obj != null){ 
         entidadEliminar = obj;
         $("#windowEliminarCategories").data("kendoWindow").center();

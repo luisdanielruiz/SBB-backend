@@ -121,7 +121,7 @@ function guardarUserApp(){
     }
 } 
 var entidadEliminar = null; 
-function elimnarWinUserApp(obj){/*tabla es string*/ 
+function eliminarWinUserApp(obj){/*tabla es string*/ 
     if (obj != null){ 
         entidadEliminar = obj;
         $("#windowEliminarUserApp").data("kendoWindow").center();

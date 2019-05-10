@@ -43,26 +43,25 @@ public class SBBListarChallenges extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            
+
             /* TODO output your page here. You may use following sample code. */
-            PyVO  e = new PyVO(str.cantCols);             
+            PyVO e = new PyVO(str.cantCols);
             List<String> where = new ArrayList<String>();
             ChallengueI challenges = new ChallengueI();
-                    
+
             //ahora el listado de rubros
-            String retornaRubro = "["; 
-            List <PyVO> ents2 = PyEntidadHLP.getList(e,challenges,where, DatabaseConstant.conexionDefault);             
-            for (PyVO ent:ents2){ 
-                retornaRubro+= ent.toJSON(challenges)+","; 
-            } 
-            if (retornaRubro.endsWith(",")){  
-               retornaRubro = retornaRubro.substring(0,retornaRubro.length()-1);  
-            }  
-            retornaRubro+="]";  
-            
-            out.print("{ \"status\" : \"ok\",\"result\": "+retornaRubro+"}");
-            
-   
+            String retornaRubro = "[";
+            List<PyVO> ents2 = PyEntidadHLP.getList(e, challenges, where, DatabaseConstant.conexionDefault);
+            for (PyVO ent : ents2) {
+                retornaRubro += ent.toJSON(challenges) + ",";
+            }
+            if (retornaRubro.endsWith(",")) {
+                retornaRubro = retornaRubro.substring(0, retornaRubro.length() - 1);
+            }
+            retornaRubro += "]";
+
+            out.print("{ \"status\" : \"ok\",\"result\": " + retornaRubro + "}");
+
         } catch (Exception ex) {
             Logger.getLogger(SBBListarChallenges.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

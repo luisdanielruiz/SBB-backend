@@ -50,36 +50,36 @@ public class SBBRecuperarPassword extends HttpServlet {
         try {
             UserAppI usuario = new UserAppI();
             PyVO e = new PyVO(usuario.cantCols);
-            
+
             String mail = request.getParameter("mail");
-            String asunto="SBB: Recuperación de contraseña";
-            
-            if (mail == null || mail==""){
+            String asunto = "SBB: Recuperación de contraseña";
+
+            if (mail == null || mail == "") {
                 out.print("{ \"status\" : \"error\",\"result\": \"No se encuentra mail.\"}");
-            }else{
-                List<String> where = new ArrayList<String>();           
+            } else {
+                List<String> where = new ArrayList<String>();
                 e.getDataFrom(usuario, request);
                 where.add(e.getWhereFieldValue(usuario, usuario.email, mail));
-                List <PyVO> ents = PyEntidadHLP.getList(e,usuario,where, DatabaseConstant.conexionDefault);
-                
-                if(ents.isEmpty()){
+                List<PyVO> ents = PyEntidadHLP.getList(e, usuario, where, DatabaseConstant.conexionDefault);
+
+                if (ents.isEmpty()) {
                     out.print("{ \"status\" : \"error\",\"result\": \"No se encuentra mail.\"}");
-                }else{
-                    String html="<html>"
+                } else {
+                    String html = "<html>"
                             + "<body>"
                             + "<img src=\"http://.net/logo.png\" style=\"widht:100px; height:100px; margin:10px auto;\">"
                             + "<p>Hola, tu contraseña es: " + ents.get(0).getValue(usuario.password)
-                            +"</p>"
-                            +"</br>"
-                            +"<p>Saludos desde SBB.</p>"
+                            + "</p>"
+                            + "</br>"
+                            + "<p>Saludos desde SBB.</p>"
                             + "</body>"
                             + "</html>";
 
                     Email from = new Email("registro@smartboxingbag.info");
-                    String subject = asunto;   
-                    Email to = new Email(ents.get(0).getValue(usuario.email)); 
+                    String subject = asunto;
+                    Email to = new Email(ents.get(0).getValue(usuario.email));
                     // Email to = new Email("medicinabiomolecular4@gmail.com");
-                    Content content = new Content("text/html",html);
+                    Content content = new Content("text/html", html);
 
                     com.sendgrid.Mail email = new com.sendgrid.Mail(from, subject, to, content);
 
@@ -88,16 +88,13 @@ public class SBBRecuperarPassword extends HttpServlet {
                     req.method = (Method.POST);
                     req.endpoint = ("mail/send");
                     req.body = (email.build());
-                    Response respuesta = sg.api(req);              
+                    Response respuesta = sg.api(req);
 
-
-                    String retorna = "OK"+respuesta.statusCode;
+                    String retorna = "OK" + respuesta.statusCode;
                     out.print("{ \"status\" : \"ok\",\"result\": \"Su contraseña ya se envió a su mail.\"}");
                 }
             }
-            
-            
-            
+
         } catch (Exception ex) {
             Logger.getLogger(SBBRecuperarPassword.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

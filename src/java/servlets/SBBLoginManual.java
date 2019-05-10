@@ -22,41 +22,36 @@ import java.util.ArrayList;
 @WebServlet(name = "SBBLoginManual", urlPatterns = {"/SBBLoginManual"})
 public class SBBLoginManual extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        UserAppI user = new UserAppI();
-        PyVO eUser = new PyVO(user.cantCols);  
-        List<String> where = new ArrayList<String>();
-     
-        where.add(eUser.getWhereFieldValue(user, user.email, email));
-        where.add(eUser.getWhereFieldValue(user, user.password, password));
-         
-        
-        List<PyVO> ents = PyEntidadHLP.getList(eUser, user, where, DatabaseConstant.conexionDefault);
-        
-        
-        if ((email == null || email.isEmpty())){
-            out.print("{ \"status\" : \"error\",\"result\": \"Mail Vacio o Null\"}");
-        } else if(password == null || password.isEmpty()){
-             out.print("{ \"status\" : \"error\",\"result\": \"Password Vacia o Null\"}");
-        }else if(ents.isEmpty()){
-            out.print("{ \"status\" : \"error\",\"result\": \"No hay valores\"}");
-        }
-        else{
-            out.print("{ \"status\" : \"ok\",\"result\":"+ents.get(0).toJSON(user)+"}");
-        }
-       
-        } catch(Exception e){
-        e.printStackTrace();
-        
-        }
-        finally {
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            UserAppI user = new UserAppI();
+            PyVO eUser = new PyVO(user.cantCols);
+            List<String> where = new ArrayList<String>();
+
+            where.add(eUser.getWhereFieldValue(user, user.email, email));
+            where.add(eUser.getWhereFieldValue(user, user.password, password));
+
+            List<PyVO> ents = PyEntidadHLP.getList(eUser, user, where, DatabaseConstant.conexionDefault);
+
+            if ((email == null || email.isEmpty())) {
+                out.print("{ \"status\" : \"error\",\"result\": \"Mail Vacio o Null\"}");
+            } else if (password == null || password.isEmpty()) {
+                out.print("{ \"status\" : \"error\",\"result\": \"Password Vacia o Null\"}");
+            } else if (ents.isEmpty()) {
+                out.print("{ \"status\" : \"error\",\"result\": \"No hay valores\"}");
+            } else {
+                out.print("{ \"status\" : \"ok\",\"result\":" + ents.get(0).toJSON(user) + "}");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
             out.close();
         }
     }
@@ -72,9 +67,9 @@ public class SBBLoginManual extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-         processRequest(request, response);
-       
+            throws ServletException, IOException {
+        processRequest(request, response);
+
     }
 
     /**

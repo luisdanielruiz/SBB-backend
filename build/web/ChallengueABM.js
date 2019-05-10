@@ -77,7 +77,7 @@ function guardarChallengue(){
     }
 } 
 var entidadEliminar = null; 
-function elimnarWinChallengue(obj){/*tabla es string*/ 
+function eliminarWinChallengue(obj){/*tabla es string*/ 
     if (obj != null){ 
         entidadEliminar = obj;
         $("#windowEliminarChallengue").data("kendoWindow").center();

@@ -71,7 +71,7 @@ function guardarTipoChallengue(){
     }
 } 
 var entidadEliminar = null; 
-function elimnarWinTipoChallengue(obj){/*tabla es string*/ 
+function eliminarWinTipoChallengue(obj){/*tabla es string*/ 
     if (obj != null){ 
         entidadEliminar = obj;
         $("#windowEliminarTipoChallengue").data("kendoWindow").center();

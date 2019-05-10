@@ -7,7 +7,6 @@ package servlets;
 
 import AplicationConstant.DatabaseConstant;
 import GS.Base.MensajesI;
-import static GS.UTIL.ReporteModelo.ReporteModeloVO.html;
 import Py.DB.VO.Helpers.PyEntidadHLP;
 import Py.DB.VO.PyVO;
 import com.sendgrid.Content;
@@ -49,26 +48,25 @@ public class SBBContacto extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            MensajesI mensajes= new MensajesI();
+            MensajesI mensajes = new MensajesI();
             PyVO str = new PyVO(mensajes.cantCols);
-          
+
             String idUser = request.getParameter("idUser");
             String mail = request.getParameter("mail");
             String asunto = request.getParameter("asunto");
             String mensaje = request.getParameter("mensaje");
-            
-            List<String> where = new ArrayList<String>();           
-            str.getDataFrom(mensajes, request);
-            List <PyVO> ents = PyEntidadHLP.getList(str,mensajes,where, DatabaseConstant.conexionDefault);    
 
-            out.print("{ \"status\" : \"ok\",\"result\":"+str.toJSON(mensajes)+"}");
-            PyEntidadHLP.doInsert(str, mensajes, DatabaseConstant.conexionDefault);             
-          
+            List<String> where = new ArrayList<String>();
+            str.getDataFrom(mensajes, request);
+            List<PyVO> ents = PyEntidadHLP.getList(str, mensajes, where, DatabaseConstant.conexionDefault);
+
+            out.print("{ \"status\" : \"ok\",\"result\":" + str.toJSON(mensajes) + "}");
+            PyEntidadHLP.doInsert(str, mensajes, DatabaseConstant.conexionDefault);
 
             Email from = new Email("info@touchandshopapp.com");
-            String subject = asunto;            
+            String subject = asunto;
             Email to = new Email("info@touchandshopapp.com");
-            Content content = new Content("text/html", mensaje); 
+            Content content = new Content("text/html", mensaje);
             com.sendgrid.Mail email = new com.sendgrid.Mail(from, subject, to, content);
 
             SendGrid sg = new SendGrid("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");
@@ -78,10 +76,7 @@ public class SBBContacto extends HttpServlet {
             req.body = (email.build());
             Response respuesta = sg.api(req);
 
-                
-                
-                
-            String retorna = "OK"+respuesta.statusCode;
+            String retorna = "OK" + respuesta.statusCode;
         } catch (Exception ex) {
             Logger.getLogger(SBBContacto.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

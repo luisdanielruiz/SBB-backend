@@ -75,7 +75,7 @@ function guardarTesteo(){
 } 
 var entidadEliminar = null; 
          
-function elimnarWinTesteo(obj){/*tabla es string*/ 
+function eliminarWinTesteo(obj){/*tabla es string*/ 
     if (obj != null){ 
         entidadEliminar = obj;
         $("#windowEliminarTesteo").data("kendoWindow").center();

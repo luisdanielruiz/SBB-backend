@@ -5,10 +5,6 @@
  */
 package servlets;
 
-import AplicationConstant.DatabaseConstant;
-import GS.Base.UserAppI;
-import Py.DB.VO.Helpers.PyEntidadHLP;
-import Py.DB.VO.PyVO;
 import com.sendgrid.Content;
 import com.sendgrid.Email;
 import com.sendgrid.Method;
@@ -17,8 +13,6 @@ import com.sendgrid.Response;
 import com.sendgrid.SendGrid;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -48,54 +42,50 @@ public class SBBConfirmarMail extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-           
+
             String mail = request.getParameter("mail");
-            String asunto="SBB: Confirmación de cuenta";
-            
-            if (mail == null || mail==""){
+            String asunto = "SBB: Confirmación de cuenta";
+
+            if (mail == null || mail == "") {
                 out.print("{ \"status\" : \"error\",\"result\": \"No se encuentra mail.\"}");
-            }else{
-                    String link = "http://35.239.34.187/SBB/ConfirmacionDeMail.jsp?mail="+mail;
-                    //String link = "http://localhost:8085/TYS/ConfirmacionDeMail.jsp?mail="+mail;
-                    String html="<html>"
-                            + "<body>"
-                            + "<img src=\"http://.com/images/2.png\" style=\"widht:100px; height:100px; margin:10px auto;\">"
-                            + "<p>Bienvenido a SBB App,"
-                            +"</br>"
-                            +"hace click en el link para confirmar cuenta."
-                            +"</p>"
-                            +"</br>"
-                            +"<a href="+link
-                            +">Confirmar Cuenta</a>"
-                            +"<p>Saludos,"
-                            +"</br>"
-                            + "SBB Team.</p>"
-                            + "</body>"
-                            + "</html>";
-                    //String correo=mail;
-                    Email from = new Email("registro@smartboxingbag.info");
-                    String subject = asunto;   
-                    Email to = new Email(mail);
-                   
-                    Content content = new Content("text/html",html);
+            } else {
+                String link = "http://35.239.34.187/SBB/ConfirmacionDeMail.jsp?mail=" + mail;
+                //String link = "http://localhost:8085/TYS/ConfirmacionDeMail.jsp?mail="+mail;
+                String html = "<html>"
+                        + "<body>"
+                        + "<img src=\"http://.com/images/2.png\" style=\"widht:100px; height:100px; margin:10px auto;\">"
+                        + "<p>Bienvenido a SBB App,"
+                        + "</br>"
+                        + "hace click en el link para confirmar cuenta."
+                        + "</p>"
+                        + "</br>"
+                        + "<a href=" + link
+                        + ">Confirmar Cuenta</a>"
+                        + "<p>Saludos,"
+                        + "</br>"
+                        + "SBB Team.</p>"
+                        + "</body>"
+                        + "</html>";
+                //String correo=mail;
+                Email from = new Email("registro@smartboxingbag.info");
+                String subject = asunto;
+                Email to = new Email(mail);
 
-                    com.sendgrid.Mail email = new com.sendgrid.Mail(from, subject, to, content);
+                Content content = new Content("text/html", html);
 
-                    SendGrid sg = new SendGrid("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");
-                    Request req = new Request();
-                    req.method = (Method.POST);
-                    req.endpoint = ("mail/send");
-                    req.body = (email.build());
-                    Response respuesta = sg.api(req);              
+                com.sendgrid.Mail email = new com.sendgrid.Mail(from, subject, to, content);
 
+                SendGrid sg = new SendGrid("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");
+                Request req = new Request();
+                req.method = (Method.POST);
+                req.endpoint = ("mail/send");
+                req.body = (email.build());
+                Response respuesta = sg.api(req);
 
-                    String retorna = "OK"+respuesta.statusCode;
-                    out.print("{ \"status\" : \"ok\",\"result\": \"Se envió correo confirmatorio.\"}");
-                }
-            
-            
-            
-            
+                String retorna = "OK" + respuesta.statusCode;
+                out.print("{ \"status\" : \"ok\",\"result\": \"Se envió correo confirmatorio.\"}");
+            }
+
         } catch (Exception ex) {
             Logger.getLogger(SBBConfirmarMail.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

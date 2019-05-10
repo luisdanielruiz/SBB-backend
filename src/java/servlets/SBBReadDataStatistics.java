@@ -39,51 +39,45 @@ public class SBBReadDataStatistics extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
-        
-         try {
-        String idUser = request.getParameter("idUser");
-        
-        StatisticsI stadistics = new StatisticsI();
-        PyVO eStatistics = new PyVO(stadistics.cantCols);  
-        List<String> where = new ArrayList<String>();
-     
-        where.add(eStatistics.getWhereFieldValue(stadistics, stadistics.user, idUser));
-     
-        List<PyVO> ents = PyEntidadHLP.getList(eStatistics, stadistics, where, DatabaseConstant.conexionDefault);
-        
-        
-        if ((idUser == null || idUser.isEmpty())){
-            out.print("{ \"status\" : \"error\",\"result\": \"Id Vacio o Null\"}");
-        }else if(ents.isEmpty()){
-            out.print("{ \"status\" : \"error\",\"result\": \"No hay valores\"}");
-        }
-        else{
-           String retorna = "["; 
 
-                for (PyVO ent:ents){ 
-           
-                    retorna+= ent.toJSON(stadistics)+","; 
+        try {
+            String idUser = request.getParameter("idUser");
+
+            StatisticsI stadistics = new StatisticsI();
+            PyVO eStatistics = new PyVO(stadistics.cantCols);
+            List<String> where = new ArrayList<String>();
+
+            where.add(eStatistics.getWhereFieldValue(stadistics, stadistics.user, idUser));
+
+            List<PyVO> ents = PyEntidadHLP.getList(eStatistics, stadistics, where, DatabaseConstant.conexionDefault);
+
+            if ((idUser == null || idUser.isEmpty())) {
+                out.print("{ \"status\" : \"error\",\"result\": \"Id Vacio o Null\"}");
+            } else if (ents.isEmpty()) {
+                out.print("{ \"status\" : \"error\",\"result\": \"No hay valores\"}");
+            } else {
+                String retorna = "[";
+
+                for (PyVO ent : ents) {
+
+                    retorna += ent.toJSON(stadistics) + ",";
                 }
-                if (retorna.endsWith(",")){  
-                   retorna = retorna.substring(0,retorna.length()-1);  
-                }  
-                retorna+="]";  
+                if (retorna.endsWith(",")) {
+                    retorna = retorna.substring(0, retorna.length() - 1);
+                }
+                retorna += "]";
 
-                out.print("{ \"status\" : \"ok\",\"result\": "+retorna+"}");
-                
-        }
-       
-        } catch(Exception e){
-        e.printStackTrace();
-        
-        }
-        finally {
+                out.print("{ \"status\" : \"ok\",\"result\": " + retorna + "}");
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
             out.close();
         }
-        
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

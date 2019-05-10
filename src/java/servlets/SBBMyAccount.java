@@ -42,67 +42,67 @@ public class SBBMyAccount extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-            
+
         try {
-                UserAppI usuario = new UserAppI();
-                PyVO e = new PyVO(usuario.cantCols);
-                
-                String idUser = request.getParameter("idUser");
-                String name = request.getParameter("name");
-                String surname = request.getParameter("surname");
-                String userName = request.getParameter("userName");
-                String email = request.getParameter("email");
-                String phone = request.getParameter("phone");
-                String address = request.getParameter("address");
-                String dni = request.getParameter("dni");
-                String city = request.getParameter("city");
-                String country = request.getParameter("country");
-                String newPassword1 = request.getParameter("newPassword1");
-                String newPassword2 = request.getParameter("newPassword2");
-                String password = request.getParameter("password");
-                
-                List<String> where = new ArrayList<String>();                
-                
-                e.getDataFrom(usuario, request);           
-                
-                where.add(e.getWhereFieldValue(usuario,usuario.idUser,idUser));
-                List <PyVO> ents = PyEntidadHLP.getList(e,usuario,where, DatabaseConstant.conexionDefault);    
-                
-                if(ents.isEmpty()){
-                    
-                    out.print("No existe el ususario que desea editar");                    
-                    
-                }else if((email == null || email.isEmpty())
-                        || (name == null || name.isEmpty())
-                        || (surname == null || surname.isEmpty())
-                        || (userName == null || userName.isEmpty())
-                        || (city == null || city.isEmpty())
-                        || (dni == null || dni.isEmpty())
-                        || (address == null || address.isEmpty())
-                        || (country == null || country.isEmpty())
-                        || (phone == null || phone.isEmpty())){
-                     
-                            out.print("{status\": \"error\", \"errorCode\": \"000004\", \"stacktrace\": \"error in one or more values required in the register}");
-                    
-                }else if(!((newPassword1 == null || newPassword1.isEmpty())
-                        || (newPassword2 == null || newPassword2.isEmpty())
-                        || (password == null || password.isEmpty()))){
-                       
-                            if((newPassword1.equals(newPassword2))&&(ents.get(0).getValue(usuario.password) .equals(password))){
-                                    
-                                e.setValue(usuario.password, newPassword2);                                        
-                                PyEntidadHLP.doUpdate(e, usuario, where, DatabaseConstant.conexionDefault);
-                                out.print("{ \"status\" : \"ok\",\"result\":"+e.toJSON(usuario)+"}");
-                            }else{
-                                
-                                out.print("{ \"status\" : \"error\",\"result\":cambio de contraseña fallido, reingrese los datos}");                                                           
-                            }                          
-                }else{
-                    
-                    e.setValue(usuario.password, ents.get(0).getValue(usuario.password));
-                    out.print("{ \"status\" : \"ok\",\"result\":"+e.toJSON(usuario)+"}");                    
-                    PyEntidadHLP.doUpdate(e, usuario, where, DatabaseConstant.conexionDefault);                                    
+            UserAppI usuario = new UserAppI();
+            PyVO e = new PyVO(usuario.cantCols);
+
+            String idUser = request.getParameter("idUser");
+            String name = request.getParameter("name");
+            String surname = request.getParameter("surname");
+            String userName = request.getParameter("userName");
+            String email = request.getParameter("email");
+            String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
+            String dni = request.getParameter("dni");
+            String city = request.getParameter("city");
+            String country = request.getParameter("country");
+            String newPassword1 = request.getParameter("newPassword1");
+            String newPassword2 = request.getParameter("newPassword2");
+            String password = request.getParameter("password");
+
+            List<String> where = new ArrayList<String>();
+
+            e.getDataFrom(usuario, request);
+
+            where.add(e.getWhereFieldValue(usuario, usuario.idUser, idUser));
+            List<PyVO> ents = PyEntidadHLP.getList(e, usuario, where, DatabaseConstant.conexionDefault);
+
+            if (ents.isEmpty()) {
+
+                out.print("No existe el ususario que desea editar");
+
+            } else if ((email == null || email.isEmpty())
+                    || (name == null || name.isEmpty())
+                    || (surname == null || surname.isEmpty())
+                    || (userName == null || userName.isEmpty())
+                    || (city == null || city.isEmpty())
+                    || (dni == null || dni.isEmpty())
+                    || (address == null || address.isEmpty())
+                    || (country == null || country.isEmpty())
+                    || (phone == null || phone.isEmpty())) {
+
+                out.print("{status\": \"error\", \"errorCode\": \"000004\", \"stacktrace\": \"error in one or more values required in the register}");
+
+            } else if (!((newPassword1 == null || newPassword1.isEmpty())
+                    || (newPassword2 == null || newPassword2.isEmpty())
+                    || (password == null || password.isEmpty()))) {
+
+                if ((newPassword1.equals(newPassword2)) && (ents.get(0).getValue(usuario.password).equals(password))) {
+
+                    e.setValue(usuario.password, newPassword2);
+                    PyEntidadHLP.doUpdate(e, usuario, where, DatabaseConstant.conexionDefault);
+                    out.print("{ \"status\" : \"ok\",\"result\":" + e.toJSON(usuario) + "}");
+                } else {
+
+                    out.print("{ \"status\" : \"error\",\"result\":cambio de contraseña fallido, reingrese los datos}");
                 }
+            } else {
+
+                e.setValue(usuario.password, ents.get(0).getValue(usuario.password));
+                out.print("{ \"status\" : \"ok\",\"result\":" + e.toJSON(usuario) + "}");
+                PyEntidadHLP.doUpdate(e, usuario, where, DatabaseConstant.conexionDefault);
+            }
         } catch (Exception ex) {
             Logger.getLogger(SBBMyAccount.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

@@ -79,7 +79,7 @@ function guardarStatistics(){
     }
 } 
 var entidadEliminar = null; 
-function elimnarWinStatistics(obj){/*tabla es string*/ 
+function eliminarWinStatistics(obj){/*tabla es string*/ 
     if (obj != null){ 
         entidadEliminar = obj;
         $("#windowEliminarStatistics").data("kendoWindow").center();

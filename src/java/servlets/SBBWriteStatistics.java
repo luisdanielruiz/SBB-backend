@@ -6,7 +6,6 @@
 package servlets;
 
 import AplicationConstant.DatabaseConstant;
-import GS.Base.HitI;
 import GS.Base.StatisticsI;
 import Py.DB.VO.Helpers.PyEntidadHLP;
 import Py.DB.VO.PyVO;
@@ -43,33 +42,36 @@ public class SBBWriteStatistics extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-                        
+
             StatisticsI statistic = new StatisticsI();
             PyVO str = new PyVO(statistic.cantCols);
-            
+
             /*parametros para insertar en stadisticas*/
             String user = request.getParameter("user");
             String challengue = request.getParameter("challengue");
             String tipoChallengue = request.getParameter("tipoChallengue");
-               
-            List<String> where = new ArrayList<String>(); 
-            str.getDataFrom(statistic, request);
-            where.add(str.getWhereFieldValue(statistic,statistic.user,user));
-            where.add(str.getWhereFieldValue(statistic,statistic.challengue,challengue));
-            where.add(str.getWhereFieldValue(statistic,statistic.tipoChallengue,tipoChallengue));
-            
-             List <PyVO> ents = PyEntidadHLP.getList(str,statistic,where, DatabaseConstant.conexionDefault);
+            String time = request.getParameter("time");
+            String hits = request.getParameter("hits");
 
-             if(ents.isEmpty()){
-                   
-                    out.print("{ \"status\" : \"ok\",\"result\":"+str.toJSON(statistic)+"}");
-                    PyEntidadHLP.doInsert(str, statistic, DatabaseConstant.conexionDefault);
-                                 
-             }else{
-                    out.print("error");
-             }
-                    
-            
+            List<String> where = new ArrayList<String>();
+            str.getDataFrom(statistic, request);
+            where.add(str.getWhereFieldValue(statistic, statistic.user, user));
+            where.add(str.getWhereFieldValue(statistic, statistic.challengue, challengue));
+            where.add(str.getWhereFieldValue(statistic, statistic.tipoChallengue, tipoChallengue));
+            where.add(str.getWhereFieldValue(statistic, statistic.time, time));
+            where.add(str.getWhereFieldValue(statistic, statistic.hits, hits));
+
+            List<PyVO> ents = PyEntidadHLP.getList(str, statistic, where, DatabaseConstant.conexionDefault);
+
+            if (ents.isEmpty()) {
+
+                out.print("{ \"status\" : \"ok\",\"result\":" + str.toJSON(statistic) + "}");
+                PyEntidadHLP.doInsert(str, statistic, DatabaseConstant.conexionDefault);
+
+            } else {
+                out.print("error");
+            }
+
         } catch (Exception ex) {
             Logger.getLogger(SBBWriteStatistics.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

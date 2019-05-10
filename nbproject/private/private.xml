@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/daniel/Desktop/SBB/src/java/servlets/SBBContacto.java</file>
+            <file>file:/Users/daniel/Desktop/SBB/src/java/servlets/SBBListarCategorias.java</file>
+            <file>file:/Users/daniel/Desktop/SBB/src/java/servlets/SBBListarChallenges.java</file>
+            <file>file:/Users/daniel/Desktop/SBB/src/java/servlets/SBBRecuperarPassword.java</file>
+            <file>file:/Users/daniel/Desktop/SBB/src/java/AplicationConstant/DatabaseConstant.java</file>
+            <file>file:/Users/daniel/Desktop/SBB/src/java/servlets/SBBWriteStatistics.java</file>
+            <file>file:/Users/daniel/Desktop/SBB/src/java/servlets/SBBReadDataStatistics.java</file>
+            <file>file:/Users/daniel/Desktop/SBB/src/java/servlets/SBBConfirmarMail.java</file>
+            <file>file:/Users/daniel/Desktop/SBB/src/java/servlets/SBBLoginManual.java</file>
+            <file>file:/Users/daniel/Desktop/SBB/src/java/servlets/SBBUpdateUser.java</file>
+            <file>file:/Users/daniel/Desktop/SBB/src/java/servlets/SBBMyAccount.java</file>
+            <file>file:/Users/daniel/Desktop/SBB/src/java/servlets/SBBRegistroManual.java</file>
+        </group>
     </open-files>
 </project-private>
