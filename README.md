@@ -5,7 +5,7 @@
 * Abrir PHPMyAdmin
 * Importar el script de la base de datos
 
-## Creacion de entorno
+## Creación de entorno
 
 * [Instalar Netbeans 8.2 con Apache Tomcat](https://netbeans.org/downloads/8.2/rc/)
 * Clonar este repositorio:
