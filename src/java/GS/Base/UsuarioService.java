@@ -217,6 +217,11 @@ public class UsuarioService extends HttpServlet {
     public static boolean comprobarSession(HttpServletRequest request, String us, String pass){
         return comprobarSession(request.getSession(), us, pass);
     }
+    
+    public static void logout (HttpServletRequest request) {
+        HttpSession mySession = request.getSession();
+        mySession.invalidate(); 
+    }
 
     public static boolean comprobarSession(HttpSession mySession, String us, String pass){
         Gson js = new Gson();

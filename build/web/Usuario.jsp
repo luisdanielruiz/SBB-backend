@@ -14,7 +14,7 @@
         if (!UsuarioService.comprobarSession(request)) 
             response.sendRedirect("Login.jsp");     
     %> 
- 
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
     <head> 
         <%=WebDependencies.getCSSandJS()%> 
         <script src="UsuarioABM.js"></script> 
@@ -41,15 +41,15 @@
                    <input type="hidden" name="fromABMUsuario" id="fromABMUsuario" value=""> 
                    <ul class="fieldlist"> 
                         <li>
-                            <label for="simple-input">user</label>
+                            <label for="simple-input">Usuario</label>
                             <input name="user" id="userR" type="text" class="k-textbox" style="width: 100%;" readonly />
                         </li>
                         <li>
-                            <label for="simple-input">password</label>
+                            <label for="simple-input">Contraseña</label>
                             <input name="password" id="passwordR" type="text" class="k-textbox" style="width: 100%;"  />
                         </li>
                         <li>
-                            <label for="simple-input">mail</label>
+                            <label for="simple-input">Mail</label>
                             <input name="mail" id="mailR" type="text" placeholder="sophie@example.com" class="k-textbox" style="width: 100%;" />
                         </li>
                         <li style="display: none">
@@ -133,9 +133,9 @@
  
                 DataGrid dg = new DataGrid("Usuario", columnas, -1, dl); 
  
-                columnas.add(new DataGridColumn("user", "user", "1", "", "", "0", "")); 
-                columnas.add(new DataGridColumn("password", "password", "1", "", "", "1", "")); 
-                columnas.add(new DataGridColumn("mail", "mail", "1", "", "", "2", "")); 
+                columnas.add(new DataGridColumn("Usuario", "user", "1", "", "", "0", "")); 
+                columnas.add(new DataGridColumn("Contraseña", "password", "1", "", "", "1", "")); 
+                columnas.add(new DataGridColumn("Mail", "mail", "1", "", "", "2", "")); 
                 //columnas.add(new DataGridColumn("idPerfil", "idPerfil", "1", "", "", "3", "")); 
                 //columnas.add(new DataGridColumn("estado", "estado", "1", "", "", "4", "")); 
                 //columnas.add(new DataGridColumn("recibeMail", "recibeMail", "1", "", "", "5", "")); 

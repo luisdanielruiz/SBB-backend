@@ -14,14 +14,14 @@
         if (!UsuarioService.comprobarSession(request)) 
             response.sendRedirect("Login.jsp");     
     %> 
- 
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
     <head> 
         <%=WebDependencies.getCSSandJS()%> 
         <script src="CategoriesABM.js"></script> 
         <meta name="description" content=""> 
         <meta name="author" content=""> 
  
-        <title>Categories</title> 
+        <title>Categorias</title> 
  
     </head> 
     <body> 
@@ -111,7 +111,7 @@
                 DataGrid dg = new DataGrid("Categories", columnas, -1, dl); 
  
                 //columnas.add(new DataGridColumn("id", "id", "1", "", "", "0", "")); 
-                columnas.add(new DataGridColumn("nombre", "nombre", "1", "", "", "1", "")); 
+                columnas.add(new DataGridColumn("Nombre", "nombre", "1", "", "", "1", "")); 
                 out.println(dg.toHTML(false, true, true, "", 0)); 
             
             

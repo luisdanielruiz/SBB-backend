@@ -18,7 +18,7 @@
         if (!UsuarioService.comprobarSession(request)) 
             response.sendRedirect("Login.jsp");     
     %> 
- 
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
     <head> 
         <%=WebDependencies.getCSSandJS()%> 
         <script src="StatisticsABM.js"></script> 
@@ -218,12 +218,12 @@
  
                 DataGrid dg = new DataGrid("Statistics", columnas, -1, dl); 
  
-                columnas.add(new DataGridColumn("id", "id", "1", "", "", "0", "")); 
-                columnas.add(new DataGridColumn("user", "user", "1", "", "", "1", "")); 
-                columnas.add(new DataGridColumn("challengue", "challengue", "1", "", "", "2", "")); 
-                columnas.add(new DataGridColumn("tipoChallengue", "tipoChallengue", "1", "", "", "3", "")); 
-                columnas.add(new DataGridColumn("time", "time", "1", "", "", "4", "")); 
-                columnas.add(new DataGridColumn("hits", "hits", "1", "", "", "5", "")); 
+                columnas.add(new DataGridColumn("Id", "id", "1", "", "", "0", "")); 
+                columnas.add(new DataGridColumn("Usuario", "user", "1", "", "", "1", "")); 
+                columnas.add(new DataGridColumn("Desafio", "challengue", "1", "", "", "2", "")); 
+                columnas.add(new DataGridColumn("Tipo Desafio", "tipoChallengue", "1", "", "", "3", "")); 
+                columnas.add(new DataGridColumn("Tiempo", "time", "1", "", "", "4", "")); 
+                columnas.add(new DataGridColumn("Golpes", "hits", "1", "", "", "5", "")); 
                 out.println(dg.toHTML(false, true, true, "", 0)); 
             
             
