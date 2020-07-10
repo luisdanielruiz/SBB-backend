@@ -18,7 +18,7 @@
         if (!UsuarioService.comprobarSession(request)) 
             response.sendRedirect("Login.jsp");     
     %> 
- 
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
     <head> 
         <%=WebDependencies.getCSSandJS()%> 
         <script src="ChallengueABM.js"></script> 
@@ -184,10 +184,10 @@
                 DataGrid dg = new DataGrid("Challengue", columnas, -1, dl); 
  
                 //columnas.add(new DataGridColumn("idChallengue", "idChallengue", "1", "", "", "0", "")); 
-                columnas.add(new DataGridColumn("Tipo Challengue", "tipoChallengue", "1", "", "", "0", "")); 
-                columnas.add(new DataGridColumn("Categoria Challenge", "nombre", "1", "", "", "1", "")); 
-                columnas.add(new DataGridColumn("Hits Challenge", "hits", "1", "", "", "2", "")); 
-                columnas.add(new DataGridColumn("Time Challenge", "time", "1", "", "", "3", "")); 
+                columnas.add(new DataGridColumn("Tipo", "tipoChallengue", "1", "", "", "0", "")); 
+                columnas.add(new DataGridColumn("Categoria", "nombre", "1", "", "", "1", "")); 
+                columnas.add(new DataGridColumn("Golpes", "hits", "1", "", "", "2", "")); 
+                columnas.add(new DataGridColumn("Tiempo", "time", "1", "", "", "3", "")); 
                 out.println(dg.toHTML(false, true, true, "", 0)); 
 
             %>

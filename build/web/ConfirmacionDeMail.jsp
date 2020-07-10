@@ -16,6 +16,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>T&S</title>

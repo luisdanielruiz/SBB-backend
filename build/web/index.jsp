@@ -3,7 +3,7 @@
 <%
     
     if (!UsuarioService.comprobarSession(request)) 
-        response.sendRedirect("Login.jsp"); 
+        response.sendRedirect("Login.jsp");
     else    
         response.sendRedirect("appClean.jsp");
 

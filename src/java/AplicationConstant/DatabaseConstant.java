@@ -21,19 +21,15 @@ public class DatabaseConstant {
     public static String wwwReportes = "/var/lib/tomcat/webapps/contexto/";
     public static String www = "http://localhost:8080/";
 
-    /*public static String conexionDefault[] = {
+    /*Put here your own DB information */
+    public static String conexionDefault[] = {
         "com.mysql.jdbc.Driver",
         "jdbc:mysql://localhost/SmartBoxingBag",// 
         "root",
         ""
-    };*/
+    };
 
-    public static String conexionDefault[]={
-                              "com.mysql.jdbc.Driver",
-                              "jdbc:mysql://localhost/SmartBoxingBag",// 
-                             "root",
-                              "vP5bhVk34Qtg"
-                                };
+
     public static String urlImagenes = "/var/lib/tomcat/webapps/contextoPlenus/";
     public static String webImagenes = "/var/lib/tomcat/webapps/contextoPlenus/";
 

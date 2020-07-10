@@ -18,7 +18,7 @@
         if (!UsuarioService.comprobarSession(request)) 
             response.sendRedirect("Login.jsp");     
     %> 
- 
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
     <head> 
         <%=WebDependencies.getCSSandJS()%> 
         <script src="UserAppABM.js"></script> 
@@ -51,19 +51,19 @@
                             <input name="userName" id="userNameR" type="text" class="k-textbox" style="width: 100%;" />
                         </li>
                         <li>
-                            <label for="simple-input">email</label>
+                            <label for="simple-input">Email</label>
                             <input name="email" id="emailR" type="text" class="k-textbox" style="width: 100%;" />
                         </li>
                         <li>
-                            <label for="simple-input">name</label>
+                            <label for="simple-input">Nombre</label>
                             <input name="name" id="nameR" type="text" class="k-textbox" style="width: 100%;" />
                         </li>
                         <li>
-                            <label for="simple-input">surname</label>
+                            <label for="simple-input">Apellido</label>
                             <input name="surname" id="surnameR" type="text" class="k-textbox" style="width: 100%;" />
                         </li>
                         <li>
-                            <label for="simple-input">password</label>
+                            <label for="simple-input">Contraseña</label>
                             <input name="password" id="passwordR" type="text" class="k-textbox" style="width: 100%;" />
                         </li>
                         <li style="display: none">
@@ -218,10 +218,10 @@
  
                 //columnas.add(new DataGridColumn("idUser", "idUser", "1", "", "", "0", "")); 
                 //columnas.add(new DataGridColumn("userName", "userName", "1", "", "", "1", ""));
-                columnas.add(new DataGridColumn("email", "email", "1", "", "", "1", ""));
-                columnas.add(new DataGridColumn("name", "name", "1", "", "", "2", "")); 
-                columnas.add(new DataGridColumn("surname", "surname", "1", "", "", "3", "")); 
-                columnas.add(new DataGridColumn("password", "password", "1", "", "", "4", "")); 
+                columnas.add(new DataGridColumn("Email", "email", "1", "", "", "1", ""));
+                columnas.add(new DataGridColumn("Nombre", "name", "1", "", "", "2", "")); 
+                columnas.add(new DataGridColumn("Apellido", "surname", "1", "", "", "3", "")); 
+                columnas.add(new DataGridColumn("Contraseña", "password", "1", "", "", "4", "")); 
                  
                
                 //columnas.add(new DataGridColumn("country", "country", "1", "", "", "6", "")); 
@@ -241,7 +241,7 @@
                 //columnas.add(new DataGridColumn("dni", "dni", "1", "", "", "21", "")); 
                 //columnas.add(new DataGridColumn("cuil", "cuil", "1", "", "", "22", "")); 
                 //columnas.add(new DataGridColumn("premium", "premium", "1", "", "", "23", "")); 
-                columnas.add(new DataGridColumn("fechaRegistro", "fechaRegistro", "1", "", "", "5", "")); 
+                columnas.add(new DataGridColumn("Fecha de Registro", "fechaRegistro", "1", "", "", "5", "")); 
                 //columnas.add(new DataGridColumn("sesionHistory", "sesionHistory", "1", "", "", "25", "")); 
                 //columnas.add(new DataGridColumn("statistics", "statistics", "1", "", "", "26", "")); 
                 out.println(dg.toHTML(false, true, true, "", 0)); 
