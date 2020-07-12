@@ -151,26 +151,6 @@ public class UsuarioService extends HttpServlet {
                 if (db.getValorAtributo(UsuarioVO.estado).equals("1")) {
                     mySession.removeAttribute(loginErrorsRiesgo);
                     mySession.removeAttribute(loginErrorsNumero);
-                    /*
-                    EntidadVO perfil =  new PerfilVO();
-                    perfil.setValorPK(db.getValorAtributo(UsuarioVO.idPerfil));
-                    perfil = EntidadHLP.getByPK(perfil);
-                    String JSperfil ="";
-                    if (perfil !=null){
-                        JSperfil= "{"+
-                            perfil.toJSONsinCierre()+", "+
-                            "listaPermisos: "+PerfilService.getPermisosPerfil(perfil.getPK().getValor())
-                            +"}";
-                    }
-                    
-                    String JSUser = "{"+
-                        db.toJSONsinCierre()+", "+
-                        "perfil: "+JSperfil
-                        +"}";
-
-                    mySession.setAttribute(loginRiesgo, JSUser);
-                    mySession.setAttribute(loginNombreUsuario, db.getPK().getValor());*/
-
                     retorna = "1OK";
                     
                     String menuUser= getMenuUser(db);
@@ -178,10 +158,8 @@ public class UsuarioService extends HttpServlet {
                     mySession.setAttribute(loginRiesgo, db.getPK().getValor());
                     mySession.setAttribute(loginSoloLectura, db.getValorAtributo(UsuarioVO.idPerfil));
                     
-                    //LogService.loguear(new Date(), r.usuario, "Se ha logueado el usuario: " + r.usuario,Funcctions.getIP());
                 } else {
                     retorna = "-2ER";
-
                 }
             } else {
                 int errores = 0;
@@ -200,13 +178,9 @@ public class UsuarioService extends HttpServlet {
                     
                     retorna = "-2ER";
                 }
-
-                
                 retorna = "-1ER";
             }
         }
-
-
         return retorna;
     }
 
@@ -220,7 +194,7 @@ public class UsuarioService extends HttpServlet {
     
     public static void logout (HttpServletRequest request) {
         HttpSession mySession = request.getSession();
-        mySession.invalidate(); 
+        mySession.invalidate();
     }
 
     public static boolean comprobarSession(HttpSession mySession, String us, String pass){

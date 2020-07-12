@@ -33,7 +33,7 @@
         <span id="notification" style="display:none;"></span>
         <div id="example">
             <div class="bttGridContainer">
-                <em id="iconButtonNuevo" onclick="nuevoUserApp();"><span class="k-sprite ">Nuevo</span></em>
+                <em style="display: none" id="iconButtonNuevo" onclick="nuevoUserApp();"><span class="k-sprite ">Nuevo</span></em>
                 <em style="display: none" id="iconButtonRefresh" onclick="actualizarUserAppTelerik();"><span class="k-sprite">Refresh</span></em>
             </div>
             

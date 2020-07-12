@@ -8,5 +8,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <%
     UsuarioService.logout(request);
-    response.sendRedirect("Login.jsp"); 
+    response.sendRedirect("index.jsp"); 
 %>
